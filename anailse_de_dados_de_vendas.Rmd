@@ -1,0 +1,71 @@
+---
+title: "Análise de Dados de Vendas"
+author: "Rodrigo Felisberto"
+date: "22/11/2024"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Pacotes carregados:
+
+```{r}
+# Instala os pacotes necessários (se ainda não estiverem instalados)
+if (!require(dplyr)) install.packages("dplyr")
+if (!require(tidyr)) install.packages("tidyr")
+
+# Carrega os pacotes
+library(dplyr)
+library(tidyr)
+```
+
+## Gerar e visualisar os dados:
+
+```{r}
+# Função para gerar dataset de vendas
+gerar_dados_vendas <- function(n = 50) {
+  
+  # Define a semente para reprodutibilidade
+  set.seed(123)
+  
+  # Produtos, categorias e preços fixos
+  produto_info <- data.frame(
+    Produto = c("Notebook", "Smartphone", "Mouse", "Teclado", "Fone de Ouvido"),
+    Categoria = c("Eletrônicos", "Eletrônicos", "Acessórios", "Acessórios", "Acessórios"),
+    Preco = c(3500, 2000, 100, 150, 200)
+  )
+  
+  # Criar os dados simulados
+  dados_vendas <- data.frame(
+    ID = 1:n,
+    Data = sample(seq(as.Date("2023-01-01"), as.Date("2023-12-31"), by = "day"), n, replace = TRUE),
+    Produto = sample(produto_info$Produto, n, replace = TRUE),
+    Quantidade = sample(1:30, n, replace = TRUE)
+  )
+  
+  # Associar categorias e preços ao dataset de vendas
+  dados_vendas <- merge(dados_vendas, produto_info, by = "Produto", all.x = TRUE)
+  
+  # Introduz valores ausentes aleatórios
+  dados_vendas[sample(1:n, 5), "Produto"] <- NA
+  
+  # Introduz duplicatas aleatórias
+  duplicatas <- dados_vendas[sample(1:n, 3), ]
+  dados_vendas <- rbind(dados_vendas, duplicatas)
+  
+  return(dados_vendas)
+}
+
+# Gera o dataset
+data_raw <- gerar_dados_vendas(100)
+
+# Visualiza o dataset
+View(data_raw)
+
+# Salva o dataset como um arquivo CSV
+write.csv(data_raw, "data_raw.csv", row.names = FALSE)
+```
+
+
