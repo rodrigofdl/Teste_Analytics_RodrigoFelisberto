@@ -9,6 +9,8 @@ output: word_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Limpeza e Análise de Dados de Vendas
+
 ## Pacotes carregados:
 
 ```{r}
@@ -21,7 +23,7 @@ library(dplyr)
 library(tidyr)
 ```
 
-## Gerar e visualisar os dados:
+## Criação do script para simular um dataset de vendas:
 
 ```{r}
 # Função para gerar dataset de vendas
@@ -33,11 +35,11 @@ gerar_dados_vendas <- function(n = 50) {
   # Produtos, categorias e preços fixos
   produto_info <- data.frame(
     Produto = c("Notebook", "Smartphone", "Mouse", "Teclado", "Fone de Ouvido"),
-    Categoria = c("Eletrônicos", "Eletrônicos", "Acessórios", "Acessórios", "Acessórios"),
+    Categoria = c("Eletronicos", "Eletronicos", "Acessorios", "Acessorios", "Acessorios"),
     Preco = c(3500, 2000, 100, 150, 200)
   )
   
-  # Criar os dados simulados
+  # Cria os dados simulados
   dados_vendas <- data.frame(
     ID = 1:n,
     Data = sample(seq(as.Date("2023-01-01"), as.Date("2023-12-31"), by = "day"), n, replace = TRUE),
@@ -45,7 +47,7 @@ gerar_dados_vendas <- function(n = 50) {
     Quantidade = sample(1:30, n, replace = TRUE)
   )
   
-  # Associar categorias e preços ao dataset de vendas
+  # Associa categorias e preços ao dataset de vendas
   dados_vendas <- merge(dados_vendas, produto_info, by = "Produto", all.x = TRUE)
   
   # Introduz valores ausentes aleatórios
@@ -62,10 +64,72 @@ gerar_dados_vendas <- function(n = 50) {
 data_raw <- gerar_dados_vendas(100)
 
 # Visualiza o dataset
-View(data_raw)
+print(data_raw)
 
 # Salva o dataset como um arquivo CSV
 write.csv(data_raw, "data_raw.csv", row.names = FALSE)
 ```
 
+## Limpeza dos dados:
+
+```{r}
+# Carrega os dados brutos
+dados_vendas <- read.csv("data_raw.csv")
+
+# Verifica a estrutura dos dados
+summary(dados_vendas)
+glimpse(dados_vendas)
+
+# Verifica valores ausentes nas colunas
+colSums(is.na(dados_vendas))
+
+# Remove valores ausentes
+dados_vendas_limpo <- dados_vendas[complete.cases(dados_vendas), ]
+
+# Remove duplicatas
+dados_vendas_limpo <- dados_vendas_limpo[!duplicated(dados_vendas_limpo), ]
+
+# Converte "Data" para Date
+dados_vendas_limpo$Data <- as.Date(dados_vendas_limpo$Data)
+
+# Ordena o data frame, em ordem crescente, por data
+dados_vendas_limpo <- arrange(dados_vendas_limpo, dados_vendas_limpo$Data)
+
+# Visualiza o dataset limpo
+print(dados_vendas_limpo)
+
+# Salva o dataset limpo
+write.csv(dados_vendas_limpo, "data_clean.csv", row.names = FALSE)
+```
+
+## Análise de dados de vendas:
+
+```{r}
+# Carrega os dados limpos
+dados_vendas_limpo <- read.csv("data_clean.csv")
+
+# Calcula o total de vendas
+dados_vendas_limpo$Total <- dados_vendas_limpo$Quantidade * dados_vendas_limpo$Preco
+
+# Agrega o total por produto
+totais_por_produto <- dados_vendas_limpo %>%
+  group_by(Produto) %>%
+  summarise(
+    Total_Quantidade = sum(Quantidade),
+    Total_Vendas = sum(Total)
+  ) %>% 
+  arrange(desc(Total_Vendas))
+
+# Visualiza o calculo de vendas totais
+print(dados_vendas_limpo)
+
+# Visualiza os totais por produto
+print(totais_por_produto)
+```
+
+# Análise Exploratória de Dados de Vendas
+
+```{r}
+
+```
 

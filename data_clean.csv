@@ -1,0 +1,96 @@
+"Produto","ID","Data","Quantidade","Categoria","Preco"
+"Notebook",71,2023-01-04,28,"Eletronicos",3500
+"Smartphone",21,2023-01-07,4,"Eletronicos",2000
+"Fone de Ouvido",72,2023-01-13,16,"Acessorios",200
+"Smartphone",9,2023-01-14,18,"Eletronicos",2000
+"Teclado",2,2023-01-14,7,"Acessorios",150
+"Smartphone",58,2023-01-16,3,"Eletronicos",2000
+"Teclado",35,2023-01-23,7,"Acessorios",150
+"Mouse",78,2023-01-25,3,"Acessorios",100
+"Notebook",20,2023-01-26,2,"Eletronicos",3500
+"Mouse",31,2023-02-01,13,"Acessorios",100
+"Notebook",70,2023-02-03,6,"Eletronicos",3500
+"Fone de Ouvido",65,2023-02-08,10,"Acessorios",200
+"Fone de Ouvido",54,2023-02-10,2,"Acessorios",200
+"Teclado",27,2023-02-12,8,"Acessorios",150
+"Smartphone",93,2023-02-20,4,"Eletronicos",2000
+"Smartphone",46,2023-03-04,7,"Eletronicos",2000
+"Teclado",85,2023-03-05,23,"Acessorios",150
+"Notebook",87,2023-03-08,9,"Eletronicos",3500
+"Fone de Ouvido",73,2023-03-10,16,"Acessorios",200
+"Notebook",43,2023-03-10,21,"Eletronicos",3500
+"Fone de Ouvido",44,2023-03-13,8,"Acessorios",200
+"Smartphone",94,2023-03-15,2,"Eletronicos",2000
+"Fone de Ouvido",45,2023-03-17,21,"Acessorios",200
+"Mouse",25,2023-03-19,21,"Acessorios",100
+"Teclado",26,2023-03-22,25,"Acessorios",150
+"Fone de Ouvido",90,2023-03-26,30,"Acessorios",200
+"Notebook",63,2023-03-27,25,"Eletronicos",3500
+"Fone de Ouvido",77,2023-03-30,27,"Acessorios",200
+"Fone de Ouvido",55,2023-03-31,13,"Acessorios",200
+"Smartphone",11,2023-03-31,29,"Eletronicos",2000
+"Fone de Ouvido",12,2023-04-01,17,"Acessorios",200
+"Teclado",15,2023-04-01,20,"Acessorios",150
+"Smartphone",60,2023-04-04,2,"Eletronicos",2000
+"Fone de Ouvido",98,2023-04-08,9,"Acessorios",200
+"Teclado",32,2023-04-19,18,"Acessorios",150
+"Notebook",83,2023-04-20,2,"Eletronicos",3500
+"Notebook",59,2023-04-26,18,"Eletronicos",3500
+"Mouse",5,2023-04-28,26,"Acessorios",100
+"Smartphone",82,2023-05-01,16,"Eletronicos",2000
+"Teclado",37,2023-05-15,9,"Acessorios",150
+"Notebook",92,2023-05-16,9,"Eletronicos",3500
+"Notebook",22,2023-05-17,10,"Eletronicos",3500
+"Teclado",17,2023-05-17,25,"Acessorios",150
+"Mouse",47,2023-05-21,20,"Acessorios",100
+"Notebook",30,2023-05-23,21,"Eletronicos",3500
+"Notebook",88,2023-05-31,29,"Eletronicos",3500
+"Mouse",10,2023-06-02,30,"Acessorios",100
+"Smartphone",51,2023-06-02,1,"Eletronicos",2000
+"Smartphone",84,2023-06-07,15,"Eletronicos",2000
+"Teclado",81,2023-06-08,3,"Acessorios",150
+"Teclado",66,2023-06-08,29,"Acessorios",150
+"Mouse",91,2023-06-14,30,"Acessorios",100
+"Notebook",95,2023-06-27,22,"Eletronicos",3500
+"Notebook",3,2023-07-14,28,"Eletronicos",3500
+"Mouse",14,2023-07-16,25,"Acessorios",100
+"Fone de Ouvido",86,2023-07-18,3,"Acessorios",200
+"Smartphone",68,2023-07-28,10,"Eletronicos",2000
+"Fone de Ouvido",48,2023-07-29,18,"Acessorios",200
+"Fone de Ouvido",24,2023-07-30,5,"Acessorios",200
+"Mouse",100,2023-08-02,29,"Acessorios",100
+"Teclado",41,2023-08-05,13,"Acessorios",150
+"Notebook",57,2023-08-11,17,"Eletronicos",3500
+"Smartphone",39,2023-08-12,17,"Eletronicos",2000
+"Mouse",7,2023-08-17,20,"Acessorios",100
+"Fone de Ouvido",62,2023-08-23,12,"Acessorios",200
+"Notebook",97,2023-08-24,12,"Eletronicos",3500
+"Smartphone",67,2023-08-28,6,"Eletronicos",2000
+"Mouse",74,2023-08-31,3,"Acessorios",100
+"Fone de Ouvido",8,2023-09-01,6,"Acessorios",200
+"Smartphone",23,2023-09-11,1,"Eletronicos",2000
+"Fone de Ouvido",13,2023-09-13,5,"Acessorios",200
+"Fone de Ouvido",61,2023-09-19,5,"Acessorios",200
+"Mouse",33,2023-09-20,10,"Acessorios",100
+"Fone de Ouvido",53,2023-10-04,17,"Acessorios",200
+"Fone de Ouvido",76,2023-10-05,27,"Acessorios",200
+"Notebook",80,2023-10-13,23,"Eletronicos",3500
+"Mouse",42,2023-10-17,28,"Acessorios",100
+"Mouse",79,2023-10-18,29,"Acessorios",100
+"Teclado",52,2023-10-21,2,"Acessorios",150
+"Notebook",6,2023-10-26,9,"Eletronicos",3500
+"Mouse",69,2023-11-02,10,"Acessorios",100
+"Smartphone",75,2023-11-04,4,"Eletronicos",2000
+"Teclado",36,2023-11-05,29,"Acessorios",150
+"Fone de Ouvido",56,2023-11-12,24,"Acessorios",200
+"Fone de Ouvido",34,2023-11-26,6,"Acessorios",200
+"Smartphone",99,2023-11-26,28,"Eletronicos",2000
+"Teclado",29,2023-11-28,25,"Acessorios",150
+"Notebook",89,2023-12-01,7,"Eletronicos",3500
+"Smartphone",64,2023-12-08,13,"Eletronicos",2000
+"Teclado",50,2023-12-13,17,"Acessorios",150
+"Teclado",16,2023-12-14,3,"Acessorios",150
+"Notebook",49,2023-12-19,29,"Eletronicos",3500
+"Fone de Ouvido",18,2023-12-21,14,"Acessorios",200
+"Notebook",28,2023-12-25,23,"Eletronicos",3500
+"Smartphone",96,2023-12-28,26,"Eletronicos",2000
