@@ -17,10 +17,13 @@ knitr::opts_chunk$set(echo = TRUE)
 # Instala os pacotes necessários (se ainda não estiverem instalados)
 if (!require(dplyr)) install.packages("dplyr")
 if (!require(tidyr)) install.packages("tidyr")
+if (!require(ggplot2)) install.packages("ggplot2")
+if (!require(scales)) install.packages("scales")
 
 # Carrega os pacotes
 library(dplyr)
 library(tidyr)
+library(ggplot2)
 ```
 
 ## Criação do script para simular um dataset de vendas:
@@ -89,9 +92,6 @@ dados_vendas_limpo <- dados_vendas[complete.cases(dados_vendas), ]
 # Remove duplicatas
 dados_vendas_limpo <- dados_vendas_limpo[!duplicated(dados_vendas_limpo), ]
 
-# Converte "Data" para Date
-dados_vendas_limpo$Data <- as.Date(dados_vendas_limpo$Data)
-
 # Ordena o data frame, em ordem crescente, por data
 dados_vendas_limpo <- arrange(dados_vendas_limpo, dados_vendas_limpo$Data)
 
@@ -107,6 +107,9 @@ write.csv(dados_vendas_limpo, "data_clean.csv", row.names = FALSE)
 ```{r}
 # Carrega os dados limpos
 dados_vendas_limpo <- read.csv("data_clean.csv")
+
+# Converte "Data" para Date
+dados_vendas_limpo$Data <- as.Date(dados_vendas_limpo$Data)
 
 # Calcula o total de vendas
 dados_vendas_limpo$Total <- dados_vendas_limpo$Quantidade * dados_vendas_limpo$Preco
@@ -130,6 +133,30 @@ print(totais_por_produto)
 # Análise Exploratória de Dados de Vendas
 
 ```{r}
+# Agrega os dados por mês
+dados_mensais <- dados_vendas_limpo %>%
+  mutate(Mes = format(Data, "%Y-%m")) %>%
+  group_by(Mes) %>%
+  summarise(Total_Vendas_Mes = sum(Total)) %>%
+  arrange(Mes)
 
+# Converte Mes novamente para Date
+dados_mensais$Mes <- as.Date(paste0(dados_mensais$Mes, "-01"))
+
+# Cria o gráfico de linha
+ggplot(dados_mensais, aes(x = Mes, y = Total_Vendas_Mes)) +
+  geom_line(color = "blue", size = 1) +
+  geom_point(color = "blue", size = 2) +
+  scale_x_date(
+    date_labels = "%b",
+    date_breaks = "1 month",
+    expand = c(0, 0)
+  ) +
+  scale_y_continuous(labels = label_number(big.mark = ".", decimal.mark = ",")) +
+  labs(
+    title = "Tendência das Vendas Mensais em 2023",
+    x = "Mês",
+    y = "Total de Vendas (R$)"
+  ) +
+  theme_light()
 ```
-
