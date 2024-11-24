@@ -1,8 +1,6 @@
 # Relatório / Insights
 
-## Rodrigo Felisberto
-
-## 24/11/2024
+Rodrigo Felisberto 24/11/2024
 
 # Parte 1: Programação em R
 
