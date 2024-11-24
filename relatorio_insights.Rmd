@@ -2,18 +2,20 @@
 title: "Relatório / Insights"
 author: "Rodrigo Felisberto"
 date: "22/11/2024"
-output: md_document
+output: 
+  md_document:
+    variant: markdown_github
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Limpeza e Análise de Dados de Vendas
+## Limpeza e Análise de Dados de Vendas
 
-## Pacotes carregados:
+### Pacotes carregados:
 
-```{r}
+```{r, results='hide', warning=FALSE, message=FALSE}
 # Instala os pacotes necessários (se ainda não estiverem instalados)
 if (!require(dplyr)) install.packages("dplyr")
 if (!require(tidyr)) install.packages("tidyr")
@@ -24,11 +26,12 @@ if (!require(scales)) install.packages("scales")
 library(dplyr)
 library(tidyr)
 library(ggplot2)
+library(scales)
 ```
 
-## Criação do script para simular um dataset de vendas:
+### Criação do script para simular um dataset de vendas:
 
-```{r}
+```{r, warning=FALSE, message=FALSE}
 # Função para gerar dataset de vendas
 gerar_dados_vendas <- function(n = 50) {
   
@@ -66,16 +69,16 @@ gerar_dados_vendas <- function(n = 50) {
 # Gera o dataset
 data_raw <- gerar_dados_vendas(100)
 
-# Visualiza o dataset
-print(data_raw)
+# Visualiza as 5 primeiras linhas do dataset
+head(data_raw, 5)
 
 # Salva o dataset como um arquivo CSV
 write.csv(data_raw, "data_raw.csv", row.names = FALSE)
 ```
 
-## Limpeza dos dados:
+### Limpeza dos dados:
 
-```{r}
+```{r, warning=FALSE, message=FALSE}
 # Carrega os dados brutos
 dados_vendas <- read.csv("data_raw.csv")
 
@@ -95,16 +98,16 @@ dados_vendas_limpo <- dados_vendas_limpo[!duplicated(dados_vendas_limpo), ]
 # Ordena o data frame, em ordem crescente, por data
 dados_vendas_limpo <- arrange(dados_vendas_limpo, dados_vendas_limpo$Data)
 
-# Visualiza o dataset limpo
-print(dados_vendas_limpo)
+# Visualiza as 5 primeiras linhas do dataset limpo
+head(dados_vendas_limpo, 5)
 
-# Salva o dataset limpo
+# Salva o dataset limpo como um arquivo csv
 write.csv(dados_vendas_limpo, "data_clean.csv", row.names = FALSE)
 ```
 
-## Análise de dados de vendas:
+### Análise de dados de vendas:
 
-```{r}
+```{r, warning=FALSE, message=FALSE}
 # Carrega os dados limpos
 dados_vendas_limpo <- read.csv("data_clean.csv")
 
@@ -124,15 +127,15 @@ totais_por_produto <- dados_vendas_limpo %>%
   arrange(desc(Total_Vendas))
 
 # Visualiza o calculo de vendas totais
-print(dados_vendas_limpo)
+head(dados_vendas_limpo, 5)
 
 # Visualiza os totais por produto
 print(totais_por_produto)
 ```
 
-# Análise Exploratória de Dados de Vendas
+## Análise Exploratória de Dados de Vendas
 
-```{r}
+```{r, warning=FALSE, message=FALSE, fig.width=10, fig.height=6}
 # Agrega os dados por mês
 dados_mensais <- dados_vendas_limpo %>%
   mutate(Mes = format(Data, "%Y-%m")) %>%
