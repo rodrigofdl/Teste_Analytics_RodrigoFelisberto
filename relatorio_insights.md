@@ -5,15 +5,15 @@
 ``` r
 # Instala os pacotes necessários (se ainda não estiverem instalados)
 if (!require(dplyr)) install.packages("dplyr")
-if (!require(tidyr)) install.packages("tidyr")
 if (!require(ggplot2)) install.packages("ggplot2")
 if (!require(scales)) install.packages("scales")
+if (!require(grid)) install.packages("grid")
 
 # Carrega os pacotes
-library(dplyr)
-library(tidyr)
-library(ggplot2)
-library(scales)
+library(dplyr) # Usado na manipulação de transformação de dados
+library(ggplot2) # Usado para a criação do gráfico
+library(scales) # Usado para formatar o eixo y do gráfico
+library(grid) # Usado para aumentar as margens do gráfico
 ```
 
 ### Criação do script para simular um dataset de vendas:
@@ -206,7 +206,7 @@ dados_mensais$Mes <- as.Date(paste0(dados_mensais$Mes, "-01"))
 # Cria o gráfico de linha
 ggplot(dados_mensais, aes(x = Mes, y = Total_Vendas_Mes)) +
   geom_line(color = "blue", size = 1) +
-  geom_point(color = "blue", size = 2) +
+  geom_point(color = "blue", size = 3) +
   scale_x_date(
     date_labels = "%b",
     date_breaks = "1 month",
@@ -218,7 +218,8 @@ ggplot(dados_mensais, aes(x = Mes, y = Total_Vendas_Mes)) +
     x = "Mês",
     y = "Total de Vendas (R$)"
   ) +
-  theme_light()
+  theme_light() +
+  theme(plot.margin = margin(t = 20, r = 20, b = 20, l = 20, unit = "pt"))
 ```
 
 ![](relatorio_insights_files/figure-markdown_github/unnamed-chunk-5-1.png)
