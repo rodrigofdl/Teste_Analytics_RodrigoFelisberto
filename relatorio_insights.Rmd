@@ -1,8 +1,8 @@
 ---
-title: "Análise de Dados de Vendas"
+title: "Relatório / Insights"
 author: "Rodrigo Felisberto"
 date: "22/11/2024"
-output: word_document
+output: md_document
 ---
 
 ```{r setup, include=FALSE}
