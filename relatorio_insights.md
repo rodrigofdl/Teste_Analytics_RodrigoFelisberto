@@ -1,4 +1,12 @@
-## Limpeza e Análise de Dados de Vendas
+# Relatório / Insights
+
+## Rodrigo Felisberto
+
+## 24/11/2024
+
+# Parte 1: Programação em R
+
+## 1. Limpeza e Análise de Dados de Vendas
 
 ### Pacotes carregados:
 
@@ -190,7 +198,9 @@ print(totais_por_produto)
     ## 4 Teclado                     263        39450
     ## 5 Mouse                       297        29700
 
-## Análise Exploratória de Dados de Vendas
+#### - O produto com maior número de vendas totais foi o Notebook.
+
+## 2. Análise Exploratória de Dados de Vendas
 
 ``` r
 # Agrega os dados por mês
@@ -223,3 +233,48 @@ ggplot(dados_mensais, aes(x = Mes, y = Total_Vendas_Mes)) +
 ```
 
 ![](relatorio_insights_files/figure-markdown_github/unnamed-chunk-5-1.png)
+
+#### Insight 1: “Produtos Eletrônicos Geraram a Maior Receita”
+
+-   Os produtos da categoria eletrônicos lideram com R$ 1.637.000 em
+    vendas, representando 93% das vendas totais, sendo 69% composto por
+    Notebooks.
+-   Esse padrão indica que a demanda por produtos eletrônicos é alta, o
+    que sugere uma oportunidade de expandir o portfólio dessa categoria
+    ou investir em promoções específicas.
+
+![](relatorio_insights_files/tabela_frequencia_relativa.png)
+
+#### Insight 2: “Queda de Vendas no Mês de Setembro”
+
+-   As vendas apresentaram uma queda significativa no mês de setembro.
+-   Essa queda pode indicar sazonalidade ou fatores externos que
+    afetaram as vendas. Uma análise mais profunda pode ajudar a
+    identificar as causas e mitigar impactos futuros.
+
+<!-- -->
+
+    -- Consulta 1: Total de vendas por produto
+    SELECT 
+        Produto, 
+        Categoria, 
+        SUM(Quantidade * Preco) AS Total_Vendas -- Soma total de vendas para cada produto
+    FROM vendas
+    GROUP BY Produto, Categoria -- Agrupando pelos campos Produto e Categoria
+    ORDER BY Total_Vendas DESC; -- Ordena em ordem decrescente pelos totais de vendas
+
+![](relatorio_insights_files/consulta_1.png)
+
+    -- Consulta 2: Produtos menos vendidos em junho de 2023
+    SELECT 
+        Produto, 
+        Categoria, 
+        SUM(Quantidade * Preco) AS Total_Vendas -- Soma total de vendas para cada produto no mês
+    FROM vendas
+    WHERE strftime('%Y-%m', Data) = '2023-06' -- Filtro para incluir apenas vendas de junho de 2023
+    GROUP BY Produto, Categoria -- Agrupando por Produto e Categoria
+    ORDER BY Total_Vendas ASC; -- Ordena em ordem crescente pelos totais de vendas
+
+![](relatorio_insights_files/consulta_2.png)
+
+-   O produto com menor número de vendas no mês de junho foi o Teclado.
