@@ -63,7 +63,13 @@ gerar_dados_vendas <- function(n = 50) {
 # Gera o dataset
 data_raw <- gerar_dados_vendas(100)
 
-# Visualiza as 5 primeiras linhas do dataset
+# Salva o dataset como um arquivo CSV
+write.csv(data_raw, "data_raw.csv", row.names = FALSE)
+```
+
+#### Primeiras 5 linhas do dataset:
+
+``` r
 head(data_raw, 5)
 ```
 
@@ -74,18 +80,13 @@ head(data_raw, 5)
     ## 4 Fone de Ouvido 12 2023-04-01         17 Acessorios   200
     ## 5 Fone de Ouvido 77 2023-03-30         27 Acessorios   200
 
-``` r
-# Salva o dataset como um arquivo CSV
-write.csv(data_raw, "data_raw.csv", row.names = FALSE)
-```
-
 ### Limpeza dos dados:
 
 ``` r
 # Carrega os dados brutos
 dados_vendas <- read.csv("data_raw.csv")
 
-# Verifica a estrutura dos dados
+# Resumo das colunas
 summary(dados_vendas)
 ```
 
@@ -105,6 +106,7 @@ summary(dados_vendas)
     ##                     Max.   :3500
 
 ``` r
+# Verifica a estrutura dos dados
 glimpse(dados_vendas)
 ```
 
@@ -135,18 +137,6 @@ dados_vendas_limpo <- dados_vendas_limpo[!duplicated(dados_vendas_limpo), ]
 # Ordena o data frame, em ordem crescente, por data
 dados_vendas_limpo <- arrange(dados_vendas_limpo, dados_vendas_limpo$Data)
 
-# Visualiza as 5 primeiras linhas do dataset limpo
-head(dados_vendas_limpo, 5)
-```
-
-    ##          Produto ID       Data Quantidade   Categoria Preco
-    ## 1       Notebook 71 2023-01-04         28 Eletronicos  3500
-    ## 2     Smartphone 21 2023-01-07          4 Eletronicos  2000
-    ## 3 Fone de Ouvido 72 2023-01-13         16  Acessorios   200
-    ## 4     Smartphone  9 2023-01-14         18 Eletronicos  2000
-    ## 5        Teclado  2 2023-01-14          7  Acessorios   150
-
-``` r
 # Salva o dataset limpo como um arquivo csv
 write.csv(dados_vendas_limpo, "data_clean.csv", row.names = FALSE)
 ```
@@ -171,20 +161,11 @@ totais_por_produto <- dados_vendas_limpo %>%
     Total_Vendas = sum(Total)
   ) %>% 
   arrange(desc(Total_Vendas))
-
-# Visualiza o calculo de vendas totais
-head(dados_vendas_limpo, 5)
 ```
 
-    ##          Produto ID       Data Quantidade   Categoria Preco Total
-    ## 1       Notebook 71 2023-01-04         28 Eletronicos  3500 98000
-    ## 2     Smartphone 21 2023-01-07          4 Eletronicos  2000  8000
-    ## 3 Fone de Ouvido 72 2023-01-13         16  Acessorios   200  3200
-    ## 4     Smartphone  9 2023-01-14         18 Eletronicos  2000 36000
-    ## 5        Teclado  2 2023-01-14          7  Acessorios   150  1050
+#### Total de Vendas por Produto:
 
 ``` r
-# Visualiza os totais por produto
 print(totais_por_produto)
 ```
 
@@ -197,7 +178,7 @@ print(totais_por_produto)
     ## 4 Teclado                     263        39450
     ## 5 Mouse                       297        29700
 
-#### - O produto com maior número de vendas totais foi o Notebook.
+-   O produto com maior número de vendas totais foi o Notebook.
 
 ## 2. Análise Exploratória de Dados de Vendas
 
@@ -231,7 +212,7 @@ ggplot(dados_mensais, aes(x = Mes, y = Total_Vendas_Mes)) +
   theme(plot.margin = margin(t = 20, r = 20, b = 20, l = 20, unit = "pt"))
 ```
 
-![](relatorio_insights_files/figure-markdown_github/unnamed-chunk-5-1.png)
+![](relatorio_insights_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
 #### Insight 1: “Produtos Eletrônicos Geraram a Maior Receita”
 
@@ -251,7 +232,7 @@ ggplot(dados_mensais, aes(x = Mes, y = Total_Vendas_Mes)) +
     afetaram as vendas. Uma análise mais profunda pode ajudar a
     identificar as causas e mitigar impactos futuros.
 
-<!-- -->
+# Parte 2: SQL
 
     -- Consulta 1: Total de vendas por produto
     SELECT 

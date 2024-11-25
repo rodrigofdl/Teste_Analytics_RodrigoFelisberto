@@ -12,7 +12,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Relatório / Insights
-Rodrigo Felisberto  
+
+Rodrigo Felisberto\
 24/11/2024
 
 # Parte 1: Programação em R
@@ -75,11 +76,14 @@ gerar_dados_vendas <- function(n = 50) {
 # Gera o dataset
 data_raw <- gerar_dados_vendas(100)
 
-# Visualiza as 5 primeiras linhas do dataset
-head(data_raw, 5)
-
 # Salva o dataset como um arquivo CSV
 write.csv(data_raw, "data_raw.csv", row.names = FALSE)
+```
+
+#### Primeiras 5 linhas do dataset:
+
+```{r, warning=FALSE, message=FALSE}
+head(data_raw, 5)
 ```
 
 ### Limpeza dos dados:
@@ -88,8 +92,10 @@ write.csv(data_raw, "data_raw.csv", row.names = FALSE)
 # Carrega os dados brutos
 dados_vendas <- read.csv("data_raw.csv")
 
-# Verifica a estrutura dos dados
+# Resumo das colunas
 summary(dados_vendas)
+
+# Verifica a estrutura dos dados
 glimpse(dados_vendas)
 
 # Verifica valores ausentes nas colunas
@@ -103,9 +109,6 @@ dados_vendas_limpo <- dados_vendas_limpo[!duplicated(dados_vendas_limpo), ]
 
 # Ordena o data frame, em ordem crescente, por data
 dados_vendas_limpo <- arrange(dados_vendas_limpo, dados_vendas_limpo$Data)
-
-# Visualiza as 5 primeiras linhas do dataset limpo
-head(dados_vendas_limpo, 5)
 
 # Salva o dataset limpo como um arquivo csv
 write.csv(dados_vendas_limpo, "data_clean.csv", row.names = FALSE)
@@ -131,15 +134,15 @@ totais_por_produto <- dados_vendas_limpo %>%
     Total_Vendas = sum(Total)
   ) %>% 
   arrange(desc(Total_Vendas))
+```
 
-# Visualiza o calculo de vendas totais
-head(dados_vendas_limpo, 5)
+#### Total de Vendas por Produto:
 
-# Visualiza os totais por produto
+```{r}
 print(totais_por_produto)
 ```
 
-#### - O produto com maior número de vendas totais foi o Notebook.
+-   O produto com maior número de vendas totais foi o Notebook.
 
 ## 2. Análise Exploratória de Dados de Vendas
 
@@ -171,7 +174,6 @@ ggplot(dados_mensais, aes(x = Mes, y = Total_Vendas_Mes)) +
   ) +
   theme_light() +
   theme(plot.margin = margin(t = 20, r = 20, b = 20, l = 20, unit = "pt"))
-
 ```
 
 #### Insight 1: "Produtos Eletrônicos Geraram a Maior Receita"
@@ -185,6 +187,8 @@ ggplot(dados_mensais, aes(x = Mes, y = Total_Vendas_Mes)) +
 
 -   As vendas apresentaram uma queda significativa no mês de setembro.
 -   Essa queda pode indicar sazonalidade ou fatores externos que afetaram as vendas. Uma análise mais profunda pode ajudar a identificar as causas e mitigar impactos futuros.
+
+# Parte 2: SQL
 
 ```         
 -- Consulta 1: Total de vendas por produto
