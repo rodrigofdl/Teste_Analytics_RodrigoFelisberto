@@ -234,6 +234,11 @@ ggplot(dados_mensais, aes(x = Mes, y = Total_Vendas_Mes)) +
 
 # Parte 2: SQL
 
+Para realizar as Consultas SQL criei um Banco de Dados SQLite pelo DB
+Browser “vendas.db”e importei o dados do arquivo data_clean.csv.
+Utilizei o SQLite porque é o melhor para trabalhar com bancos de dados
+pequenos.
+
 ### Consulta 1: Total de vendas por produto
 
     SELECT 
@@ -259,4 +264,5 @@ ggplot(dados_mensais, aes(x = Mes, y = Total_Vendas_Mes)) +
 
 ![](relatorio_insights_files/consulta_2.png)
 
--   O produto com menor número de vendas no mês de junho foi o Teclado.
+-   O produto com menor número de vendas no mês de junho foi o Fone de
+    Ouvido, que não teve nenhuma unidade vendida.
