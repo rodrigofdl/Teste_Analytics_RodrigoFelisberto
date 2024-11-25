@@ -7,20 +7,20 @@ Este projeto contém scripts e relatórios que simulam, limpam, analisam e extra
 
 ## 📋 Estrutura do Projeto
 
-├── relatorio_insights_files/               # Arquivos de imagem gerados
-│   ├── figure-markdown_github/             # Arquivos de imagem gerados pelo R Markdown
-│   │   ├── unnamed-chunk-7-1.png           # Plot gerado pelo R Markdown
-│   ├── consulta_1.png                      # Print da tabela gerada pela primeira consulta SQL
-│   ├── consulta_2.png                      # Print da tabela gerada pela segunda consulta SQL
-│   ├── tabela_frequencia_relativa.png      # Print da tabela de frequência relativa feita no Excel
-├── README.md                               # Descrição do projeto
-├── consultas_sql.sql                       # Consultas SQL realizadas no projeto
-├── data_clean.csv                          # Dataset limpo
-├── data_raw.csv                            # Dataset simulado original
-├── relatorio_insights.Rmd                  # Scripts R
-├── relatorio_insights.md                   # Relatório gerado
-├── vendas.db                               # Banco de Dados criado para realizar Consultas SQL no DB Browser
-├── tabela_frequencia_relativa.xlsx         # Tabela de frequência no Excel
+relatorio_insights_files/               # Arquivos de imagem gerados  
+    figure-markdown_github/             # Arquivos de imagem gerados pelo R Markdown  
+        unnamed-chunk-7-1.png           # Plot gerado pelo R Markdown  
+    consulta_1.png                      # Print da tabela gerada pela primeira consulta SQL  
+    consulta_2.png                      # Print da tabela gerada pela segunda consulta SQL  
+    tabela_frequencia_relativa.png      # Print da tabela de frequência relativa feita no Excel  
+README.md                               # Descrição do projeto  
+consultas_sql.sql                       # Consultas SQL realizadas no projeto  
+data_clean.csv                          # Dataset limpo  
+data_raw.csv                            # Dataset simulado original  
+relatorio_insights.Rmd                  # Scripts R  
+relatorio_insights.md                   # Relatório gerado  
+vendas.db                               # Banco de Dados criado para realizar Consultas SQL no DB Browser  
+tabela_frequencia_relativa.xlsx         # Tabela de frequência no Excel  
 
 ## 🚀 Objetivos do Projeto
 
@@ -75,7 +75,7 @@ git clone https://github.com/rodrigofdl/Teste_Analytics_RodrigoFelisberto
 
 4. Para visualizar o relatório e insights [Clique aqui](https://github.com/rodrigofdl/Teste_Analytics_RodrigoFelisberto/blob/main/relatorio_insights.md).
 
-🧑‍💻 Autor
-Rodrigo Felisberto
-Se tiver dúvidas ou sugestões, sinta-se à vontade entrar em contato!
+🧑‍💻 Autor  
+Rodrigo Felisberto  
+Se tiver dúvidas ou sugestões, sinta-se à vontade entrar em contato!  
 Email: rodrigo.fdlira@gmail.com
