@@ -234,7 +234,8 @@ ggplot(dados_mensais, aes(x = Mes, y = Total_Vendas_Mes)) +
 
 # Parte 2: SQL
 
-    -- Consulta 1: Total de vendas por produto
+### Consulta 1: Total de vendas por produto
+
     SELECT 
         Produto, 
         Categoria, 
@@ -245,7 +246,8 @@ ggplot(dados_mensais, aes(x = Mes, y = Total_Vendas_Mes)) +
 
 ![](relatorio_insights_files/consulta_1.png)
 
-    -- Consulta 2: Produtos menos vendidos em junho de 2023
+### Consulta 2: Produtos menos vendidos em junho de 2023
+
     SELECT 
         Produto, 
         Categoria, 
